@@ -22,14 +22,14 @@ public class ExceptionHandlerController {
     @ExceptionHandler(value = IllegalArgumentException.class)
     public PayloadResponseDto<?> handleExpoServiceException(IllegalArgumentException ex) {
         log.error(ex.getMessage());
-        return new PayloadResponseDto<>(new ErrorResponseDto(ExceptionCodes.GIVEN_PARAMETER_IS_NOT_VALID.getCode(), "Один их предоставленных параметров неверен! " + ex.getMessage()), new ArrayList<>());
+        return new PayloadResponseDto<>(new ErrorResponseDto(ExceptionCodes.GIVEN_PARAMETER_IS_NOT_VALID.getCode(), "One of the given parameters is not valid! " + ex.getMessage()), new ArrayList<>());
     }
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(value = MissingServletRequestParameterException.class)
     public PayloadResponseDto<?> handleExpoServiceException(MissingServletRequestParameterException ex) {
         log.error(ex.getMessage());
-        return new PayloadResponseDto<>(new ErrorResponseDto(ExceptionCodes.REQUIRED_COLUMN_IS_EMPTY.getCode(), "Отсуствует обязательный параметр: " + ex.getParameterName()+"!"), new ArrayList<>());
+        return new PayloadResponseDto<>(new ErrorResponseDto(ExceptionCodes.REQUIRED_COLUMN_IS_EMPTY.getCode(), "There is no required parameter presented: " + ex.getParameterName()+"!"), new ArrayList<>());
 
     }
 }

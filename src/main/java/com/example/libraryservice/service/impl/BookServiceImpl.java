@@ -59,7 +59,7 @@ public class BookServiceImpl implements BookService {
             }
         } catch (IOException e) {
             log.error(e.getMessage(), e);
-            throw new ApiException(ExceptionCodes.SYSTEM_FAILURE, "Ошибка при парсинге файла!");
+            throw new ApiException(ExceptionCodes.SYSTEM_FAILURE, "Error during parsing of the file!");
         }
     }
 
@@ -84,7 +84,7 @@ public class BookServiceImpl implements BookService {
             return ResponseEntity.ok(top10Books);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
-            throw new ApiException(ExceptionCodes.SYSTEM_FAILURE, "Ошибка при выполнении запроса");
+            throw new ApiException(ExceptionCodes.SYSTEM_FAILURE, "Internal server error");
         }
     }
 

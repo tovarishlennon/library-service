@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Validated
 public class BookController {
 
+    //you can use autowired here, as lombok library was injected
     private final BookService bookService;
 
     public BookController(BookService bookService) {
