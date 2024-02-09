@@ -35,6 +35,9 @@ public class BookServiceImpl implements BookService {
     @Value("${file.path}")
     private String filePath;
 
+    @Value("${request.limit}")
+    private Integer limit;
+
     @PostConstruct
     public void init() {
         try (Reader reader = new InputStreamReader(Objects.requireNonNull(getClass().getResourceAsStream(filePath)), StandardCharsets.UTF_8);
@@ -79,7 +82,7 @@ public class BookServiceImpl implements BookService {
                     .filter(book -> year == null || book.getPublicationDate() != null && book.getPublicationDate().getYear() == year)
                     .filter(book -> getValueByColumn(book, column) != null)
                     .sorted(Objects.requireNonNull(getComparator(column, sorting)))
-                    .limit(10)
+                    .limit(limit)
                     .collect(Collectors.toList());
             return ResponseEntity.ok(top10Books);
         } catch (Exception e) {

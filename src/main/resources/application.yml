@@ -3,3 +3,6 @@ server:
 
 file:
   path: /static/goodreads_top100_from1980to2023_v2.csv
+
+request:
+  limit: 10
